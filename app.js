@@ -46,6 +46,10 @@ app.get('/', function(req, res) {
   res.sendfile(__dirname + "/public/js/partials/index.html");
 });
 
+
+app.get('/public/*', function(req, res) {
+  res.sendfile(__dirname + req.originalUrl);
+});
 /**
  * Start Server
  */

@@ -1,27 +1,17 @@
-'use strict';
+(function() {
+  if (window.myApp == null) {
+    window.myApp = {
+      app: {}
+    };
+  }
 
-// Declare app level module which depends on filters, and services
+  window.myApp.app.myAppNgServices = angular.module('myAppNg.services', []);
 
-angular.module('myApp', [
-  'myApp.controllers',
-  'myApp.filters',
-  'myApp.services',
-  'myApp.directives',
-  'ngWebsocket'
-]).
-config(function ($routeProvider, $locationProvider) {
-  $routeProvider.
-    when('/view1', {
-      templateUrl: 'partials/partial1',
-      controller: 'MyCtrl1'
-    }).
-    when('/view2', {
-      templateUrl: 'partials/partial2',
-      controller: 'MyCtrl2'
-    }).
-    otherwise({
-      redirectTo: '/view1'
-    });
+  window.myApp.app.myAppNgDirectives = angular.module('myAppNg.directives', []);
 
-  $locationProvider.html5Mode(true);
-});
+  window.myApp.app.myAppNgFilters = angular.module('myAppNg.filters', []);
+
+  window.myApp.app.myAppNgConstants = angular.module('myAppNg.constants', []);
+
+  window.myApp.app.myAppNg = angular.module('myAppNg', ['myAppNg.services', 'myAppNg.directives', 'myAppNg.filters', 'myAppNg.constants'])
+}).call(this);
